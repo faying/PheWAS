@@ -1,4 +1,4 @@
 export(phewas, mapICD9toPheWAS, mapPheWAStoExclusions, createPhewasTable, phenotypePlot, phewasManhattan, phenotypeManhattan, generateExample, addPhewasDescription, phewasMeta, phewasMetaModels, restrictPhewasByGender, addPhewasGroups)
-import(dplyr,tidyr, ggplot2, parallel)
+import(dplyr, tidyr, ggplot2, parallel, stats)
 importFrom(MASS,mvrnorm)
 importFrom(meta,metagen)
