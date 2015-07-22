@@ -83,6 +83,7 @@ The following are the default rows included in the returned data frame. The attr
 \item{upper}{The upper bound of the \code{confint} confidence interval, if requested}
 \item{OR}{For logistic regression, the odds ratio for the predictor}
 \item{p}{The p-value for the predictor}
+\item{converged}{Did the glm converge?}
 \item{type}{The type of regression model used}
 \item{n_total}{The total number of records in the analysis}
 \item{n_cases}{The number of cases in the analysis (logical outcome only)}
