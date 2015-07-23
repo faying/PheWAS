@@ -33,6 +33,7 @@ function(phe.gen, additive.genotypes=T,min.records=20,return.models=F,confint.le
   p=NA_real_
   beta=NA_real_
   type=NA_character_
+  converged=NA
   note=""
   model=NA
   if(n_total<min.records) {
@@ -99,11 +100,16 @@ function(phe.gen, additive.genotypes=T,min.records=20,return.models=F,confint.le
   else if(suppressWarnings(!is.na(as.numeric(gen)))) {
     gens=substring(gens,2)
   }
+  #Check for convergence
+  if(!is.na(model)[1]){
+    converged=model$converged
+    if(!converged) warning(paste0("A model for ",phe_o," and ",gen," did not converge!"))
+  }
   output=data.frame(phenotype=phe_o,snp=gens,
                     adjustment=adjustment,
                     beta=beta, SE=se,
                     OR=or,
-                    p=p, type=type,
+                    p=p, converged=converged, type=type,
                     n_total=n_total, n_cases=n_cases, n_controls=n_controls,
                     HWE_p=HWE_pval,allele_freq=allele_freq,n_no_snp=n_no_snp, 
                     note=note, stringsAsFactors=F)
@@ -126,7 +132,7 @@ function(phe.gen, additive.genotypes=T,min.records=20,return.models=F,confint.le
     output$upper=upper
     
     output=output[,c("phenotype","snp","adjustment","beta","SE",
-                                "lower","upper","OR","p","type",
+                                "lower","upper","OR","p","converged","type",
                                 "n_total","n_cases","n_controls",
                                 "HWE_p","allele_freq","n_no_snp","note")]
   }
