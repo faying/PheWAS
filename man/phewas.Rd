@@ -71,7 +71,8 @@ The complete data frame can be passed in using the \code{data} parameter with na
 These results can be directly plotted using the \code{\link[PheWAS:PheWAS_Plotting]{phewasManhattan}} function, assuming that models are not returned. If they are, the \code{results} item of the returned list needs to be used.
 }
 \value{
-The following are the default rows included in the returned data frame. The attributes of the returned data frame contain additional information about the anaylsis.
+The following are the default rows included in the returned data frame. The attributes of the returned data frame contain additional information about the anaylsis. If a model did not have sufficient cases or controls for analysis or failed to converge, NAs will be
+reported and a note will be added in the note field.
 \item{phenotype}{The outcome under study}
 \item{snp}{The predictor under study}
 \item{adjustment}{The one off adjustment used}
@@ -83,7 +84,6 @@ The following are the default rows included in the returned data frame. The attr
 \item{upper}{The upper bound of the \code{confint} confidence interval, if requested}
 \item{OR}{For logistic regression, the odds ratio for the predictor}
 \item{p}{The p-value for the predictor}
-\item{converged}{Did the glm converge?}
 \item{type}{The type of regression model used}
 \item{n_total}{The total number of records in the analysis}
 \item{n_cases}{The number of cases in the analysis (logical outcome only)}
